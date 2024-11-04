@@ -1,0 +1,54 @@
+includes:
+    - phar://phpstan.phar/conf/bleedingEdge.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/shipmonk/phpstan-rules/rules.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    checkUninitializedProperties: true
+    checkImplicitMixed: true
+    checkBenevolentUnionTypes: true
+    reportPossiblyNonexistentGeneralArrayOffset: true
+    reportPossiblyNonexistentConstantArrayOffset: true
+    reportAlwaysTrueInLastCondition: true
+    reportAnyTypeWideningInVarTag: true
+    checkMissingOverrideMethodAttribute: true
+    strictRules:
+        booleansInConditions: false
+    exceptions:
+        implicitThrows: false
+        reportUncheckedExceptionDeadCatch: false
+        check:
+            missingCheckedExceptionInThrows: true
+            tooWideThrowType: true
+        uncheckedExceptionClasses:
+            - LogicException
+            - PHPUnit\Framework\ExpectationFailedException
+    shipmonkRules:
+        classSuffixNaming:
+            superclassToSuffixMapping:
+                Exception: Exception
+                PHPUnit\Framework\TestCase: Test
+        forbidNullInBinaryOperations:
+            blacklist!: [
+                '**', '!=', '==', '+', 'and', 'or', '&&', '||', '%', '-', '/', '*', # checked by phpstan-strict-rules
+                '>', '>=', '<', '<=', '<=>', # checked by AllowComparingOnlyComparableTypesRule
+                '===', '!==', '??', # valid with null involved
+            ]
+#    ignoreErrors:
+#        -
+#            identifier: generics.noParent
+#            message: '~^Enum .*? has @implements tag, but does not implement any interface.$~'
+#            reportUnmatched: false
+#        -
+#            identifier: offsetAccess.notFound
+#            path: coding-standard/*
+#            reportUnmatched: false
+#        -
+#            identifier: offsetAccess.nonOffsetAccessible
+#            path: coding-standard/*
+#            reportUnmatched: false

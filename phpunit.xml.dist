@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://docs.phpunit.de/en/11.4/configuration.html -->
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+    colors="true"
+    cacheResult="false"
+    beStrictAboutOutputDuringTests="true"
+    failOnWarning="true"
+    failOnNotice="true"
+    failOnDeprecation="true"
+    displayDetailsOnTestsThatTriggerErrors="true"
+    displayDetailsOnTestsThatTriggerWarnings="true"
+    displayDetailsOnTestsThatTriggerNotices="true"
+    displayDetailsOnTestsThatTriggerDeprecations="true"
+>
+<!--    <coverage>-->
+
+<!--        <include>-->
+<!--            <directory>src</directory>-->
+<!--        </include>-->
+<!--    </coverage>-->
+
+    <testsuites>
+        <testsuite name="neon-updater">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory>src</directory>
+        </include>
+    </source>
+</phpunit>

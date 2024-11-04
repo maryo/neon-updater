@@ -1,0 +1,42 @@
+{
+    "name": "maryo/neon-updater",
+    "description": "Format Preserving Nette NEON Update",
+    "keywords": ["nette", "neon", "format", "preserving", "update"],
+    "homepage": "https://github.com/maryo/neon-updater",
+    "license": "MIT",
+    "authors": [
+        {"name": "Marek Štípek", "email": "mario.dweller@seznam.cz"}
+    ],
+    "require": {
+        "nette/neon": "^3.3.3"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.12.7",
+        "phpstan/phpstan-strict-rules": "^1.6.1",
+        "phpunit/phpunit": "^11.4.3",
+        "shipmonk/phpstan-rules": "^3.2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maryo\\NeonUpdater\\": "src/"
+        },
+        "exclude-from-classmap": ["/tests/"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Maryo\\NeonUpdater\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpstan": "phpstan -v analyze",
+        "phpunit": "phpunit --colors=always",
+        "phpunit:coverage": "@php -d pcov.enabled=1 vendor/bin/phpunit --colors=always --coverage-html=coverage"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.x-dev"
+        }
+    }
+}
